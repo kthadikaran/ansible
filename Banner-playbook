@@ -1,0 +1,59 @@
+Ansible playbook for banner update
+
+[ansible@ansible_master playbooks]$ ansible-playbook bannerfile.yml --syntax-check
+ [WARNING]: While constructing a mapping from /home/ansible/ansible-infra/playbooks/bannerfile.yml, line 15, column 11, found a duplicate dict
+key (name). Using last defined value only.
+
+ [WARNING]: Ignoring invalid attribute: state
+
+
+playbook: bannerfile.yml
+[ansible@ansible_master playbooks]$ cat bannerfile.yml
+---
+- name: Update banner to all the servers
+  hosts: all
+  user: ansible
+  become: true
+  tasks:
+       - name: Copy the banner files to remote systems
+         copy: src=/home/ansible/ansible-infra/banner.txt dest=/etc/
+       - name: replace banner line at sshd config
+         replace:
+          path: /etc/ssh/sshd_config
+          regexp: '^(.*)#Banner none(.*)$'
+          replace: 'Banner /etc/banner.txt'
+          backup: yes
+       -  name: restart the sshd service
+          service:
+          name: sshd
+          state: restarted
+[ansible@ansible_master playbooks]$ ansible-playbook bannerfile.yml
+ [WARNING]: While constructing a mapping from /home/ansible/ansible-infra/playbooks/bannerfile.yml, line 15, column 11, found a duplicate dict
+key (name). Using last defined value only.
+
+ [WARNING]: Ignoring invalid attribute: state
+
+
+PLAY [Update banner to all the servers] ********************************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************************************************
+ok: [192.168.43.18]
+ok: [192.168.43.182]
+
+TASK [Copy the banner files to remote systems] *************************************************************************************************
+changed: [192.168.43.182]
+changed: [192.168.43.18]
+
+TASK [replace banner line at sshd config] ******************************************************************************************************
+changed: [192.168.43.182]
+changed: [192.168.43.18]
+
+TASK [sshd] ************************************************************************************************************************************
+ok: [192.168.43.182]
+ok: [192.168.43.18]
+
+PLAY RECAP *************************************************************************************************************************************
+192.168.43.18              : ok=4    changed=2    unreachable=0    failed=0
+192.168.43.182             : ok=4    changed=2    unreachable=0    failed=0
+
+[ansible@ansible_master playbooks]$
