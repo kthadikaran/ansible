@@ -1,0 +1,40 @@
+Running Ansible Ad Hoc Command
+
+We can perform the some small tasks using ansible ad hoc command rather than playbook.
+
+You can run the command the against server using modules -m <module name> and optionaly run arguments -a "OPTION args"
+
+Simple Modules
+
+Get the Hosts name:
+
+$ansible <server-group-name> -a "hostname"
+
+
+Ping hosts:
+
+$ansible all -i hosts -m ping
+
+$ansible <server-group-name> -m ping
+
+
+Reboot the servers:
+
+$ ansible dbservers -a "/sbin/shutdown -r now" --become -K
+SUDO password: 
+ansible-dbserv | SUCCESS | rc=0 >>
+
+
+Status of hosts uptim:
+
+$ansible <server-group-name> -a "hostname"
+
+
+Check memory status of hosts:
+
+$ansible <server-group-name> -a "free -m" 
+
+
+Check disk space of hosts:
+
+$ansible <server-group-name> -a " df -h" 
