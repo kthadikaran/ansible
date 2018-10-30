@@ -1,0 +1,27 @@
+Vagrantboxes are local server infrastructure creation prepackaged tool togather with virtualbox that are the foundation of Vagrant.
+
+Vagrant infrastructure creation on RHEL.
+
+Vagrant.configure("2") do |config|
+  
+  #Vagarntbox importing process
+  
+  config.vm.define "web" do |web|
+    web.vm.box = "ubuntu/trusty32"
+    web.vm.hostname = 'web'
+    web.vm.box_url = "ubuntu/trusty32"
+
+  #Vagrantbox with private IP Address and customized port number
+
+    web.vm.network :private_network, ip: "192.168.34.20"
+    web.vm.network :forwarded_port, guest: 22, host: 10324, id: "ssh"
+  
+  #Vagrantbox Configuration
+  
+      web.vm.provider :virtualbox do |v|
+      v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      v.customize ["modifyvm", :id, "--memory", 1024]
+      v.customize ["modifyvm", :id, "--name", "web"]
+    end
+  end
+end
