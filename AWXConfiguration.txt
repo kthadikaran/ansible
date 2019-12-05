@@ -13,7 +13,7 @@ yum install http://download.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7
 
 Install the prerequisite packages.
 
-yum install postgresql96-server -y
+sudo yum install mariadb-server
 yum install -y rabbitmq-server wget memcached nginx ansible
 
 Installing and configuring Ansible and AWX packages
