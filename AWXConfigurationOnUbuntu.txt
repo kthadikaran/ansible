@@ -140,7 +140,7 @@ Step 4: Install Node and NPM
 Install Node.js and NPM on your Ubuntu system.
 
 sudo apt install -y nodejs npm
-sudo npm install npm –global
+sudo npm install npm --global
 
 Step 5: Install Ansible AWX on Ubuntu 18.04
 Install docker-py python module by executing below commands in your terminal.
