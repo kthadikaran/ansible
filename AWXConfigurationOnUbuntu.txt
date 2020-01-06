@@ -26,7 +26,7 @@ sudo apt update
 sudo apt install -y ansible
 
 Use the command below to check your Ansible version.
-ansible –version
+ansible --version
 
 Install Docker and Docker Compose
 
@@ -146,12 +146,12 @@ Step 5: Install Ansible AWX on Ubuntu 18.04
 Install docker-py python module by executing below commands in your terminal.
 
 sudo apt -y install python-pip git pwgen vim
-sudo pip install requests==2.14.2
+pip install requests==2.14.2
 
 Install docker-compose module which matches your Docker Compose version.
 
 docker-compose version
-sudo pip install docker-compose==1.24.1
+pip install docker-compose==1.24.1
 
 Clone AWX source code from GitHub using the git command.
 
