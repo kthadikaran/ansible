@@ -115,7 +115,16 @@ vim docker-compose.yml
 
 Add below data to the file.
 
- 
+version: '3'
+services:
+  web:
+    image: nginx:latest
+    ports:
+     - "8080:80"
+    links:
+     - php
+  php:
+    image: php:7-fpm
 
 Start service containers.
 docker-compose up -d
