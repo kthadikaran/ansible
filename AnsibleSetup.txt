@@ -1,0 +1,46 @@
+
+Setting up Master Ansible/Slave Server
+
+Log into your ansible server and set up a user called ansible. 
+This will be the user that uses the Ansible tool to log into all of the other servers to control them, 
+so set a strong password and perhaps set up two-factor authentication.
+
+If you want to install via the PPA, you’ll need to enable it and update your  apt  cache
+sudo apt-get install software-properties-common
+sudo apt-add-repository ppa:ansible/ansible
+sudo apt-get update
+sudo apt-get install ansible
+
+
+Add a user for ansible
+sudo adduser ansible
+
+Add ansible user to the sudo user group.
+sudo adduser ansible sudo
+
+Create SSH Key
+su ansible
+ssh-keygen
+
+#/etc/sudoers.d/
+#nano 90-cloud-init-users
+Add below lines to end of 90-cloud-init-users file.
+ansible ALL=(ALL) NOPASSWD:ALL
+
+
+Note: Recommended - Delete Original User(ubuntu or ec2-user in aws environment)
+
+Setting Up Remote Servers
+
+Add a user for ansible
+sudo adduser ansible
+
+Add ansible user to the sudo user group.
+sudo adduser ansible sudo
+su ansible
+enter the password ansible password
+cd
+mkdir ~/.ssh
+chmod 700 ~/.ssh
+touch ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys(paste publickey content in this file)
