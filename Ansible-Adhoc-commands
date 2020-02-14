@@ -6,16 +6,14 @@ You can run the command the against server using modules -m <module name> and op
 
 Simple Modules in Ansible
 
-Service Module Ansible
-
+Service Module Ansible:
 ansible  Linuxservers  -m yum -a "name=httpd state=latest" --become -u ansible
 ansible  Linuxservers  -m yum -a "name=httpd state=present" --become -u ansible
 ansible  Linuxservers  -m service -a "name=httpd state=started enabled=yes" --become -u ansible
 ansible  Linuxservers  -m service -a "name=httpd state=stopped enabled=no" --become -u ansible
 ansible  Linuxservers  -m service -a "name=httpd state=restarted" --become -u ansible
 
-Shell Module
-
+Shell Module:
 ansible all -m ping
 ansible  Linuxservers  -m shell -a "df -Th"
 ansible  Linuxservers  -m shell -a "uptime"
@@ -23,8 +21,9 @@ ansible dbservers -a "/sbin/shutdown -r now" --become -u ansible
 ansible all -m shell -a "free -m" 
 ansible all -m shell -a "hostname"
 
-
-Copy Module
+Copy Module:
 ansible  Linuxservers  -m copy -a " src=/src_path_name dest=/destination_path_name" 
 
-Fetch Module
+Fetch Module:
+ansible Linuxservers -m fetch -a "src=/tmp/ansibletest.txt dest=/home/ansible"
+
