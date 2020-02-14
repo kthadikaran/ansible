@@ -4,37 +4,27 @@ We can perform the some small tasks using ansible ad hoc command rather than pla
 
 You can run the command the against server using modules -m <module name> and optionaly run arguments -a "OPTION args"
 
-Simple Modules
+Simple Modules in Ansible
 
-Get the Hosts name:
+Service Module Ansible
 
-$ansible <server-group-name> -a "hostname"
+ansible  Linuxservers  -m yum -a "name=httpd state=latest" --become -u ansible
+ansible  Linuxservers  -m yum -a "name=httpd state=present" --become -u ansible
+ansible  Linuxservers  -m service -a "name=httpd state=started enabled=yes" --become -u ansible
+ansible  Linuxservers  -m service -a "name=httpd state=stopped enabled=no" --become -u ansible
+ansible  Linuxservers  -m service -a "name=httpd state=restarted" --become -u ansible
 
+Shell Module
 
-Ping hosts:
-
-$ansible all -i hosts -m ping
-
-$ansible <server-group-name> -m ping
-
-
-Reboot the servers:
-
-$ ansible dbservers -a "/sbin/shutdown -r now" --become -K
-SUDO password: 
-ansible-dbserv | SUCCESS | rc=0 >>
-
-
-Status of hosts uptim:
-
-$ansible <server-group-name> -a "hostname"
+ansible all -m ping
+ansible  Linuxservers  -m shell -a "df -Th"
+ansible  Linuxservers  -m shell -a "uptime"
+ansible dbservers -a "/sbin/shutdown -r now" --become -u ansible
+ansible all -m shell -a "free -m" 
+ansible all -m shell -a "hostname"
 
 
-Check memory status of hosts:
+Copy Module
+ansible  Linuxservers  -m copy -a " src=/src_path_name dest=/destination_path_name" 
 
-$ansible <server-group-name> -a "free -m" 
-
-
-Check disk space of hosts:
-
-$ansible <server-group-name> -a " df -h" 
+Fetch Module
