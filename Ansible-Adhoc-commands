@@ -33,4 +33,6 @@ ansible all  -m shell -a "cat /etc/passwd | grep user1"
 
 File Module
 ansible all -m file -a "dest=/home/ansible/ansiblefilemodule.txt state=touch mode=600 owner=ansible group=ansible" 
+ansible all -m file -a "dest=/home/ansible/ansibleshelldir state=directory"
+ansible Linuxservers -m file -a "dest=/home/ansible/ansiblefilemodule.txt state=absent"
 ansible all -m shell -a "ls -lrt"
