@@ -6,9 +6,11 @@ You can run the command the against server using modules -m <module name> and op
 
 Simple Modules in Ansible
 
-Service Module Ansible:
+Software Packages Module(yum only need to be updated apt and dnf)
 ansible  Linuxservers  -m yum -a "name=httpd state=latest" --become -u ansible
 ansible  Linuxservers  -m yum -a "name=httpd state=present" --become -u ansible
+
+Service Module(systemctl is not working at the writing of this document.)
 ansible  Linuxservers  -m service -a "name=httpd state=started enabled=yes" --become -u ansible
 ansible  Linuxservers  -m service -a "name=httpd state=stopped enabled=no" --become -u ansible
 ansible  Linuxservers  -m service -a "name=httpd state=restarted" --become -u ansible
