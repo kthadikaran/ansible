@@ -27,3 +27,6 @@ ansible  Linuxservers  -m copy -a " src=/src_path_name dest=/destination_path_na
 Fetch Module:
 ansible Linuxservers -m fetch -a "src=/tmp/ansibletest.txt dest=/home/ansible"
 
+User Module
+ansible all -m user -a "name=user1 password=user1" --become
+ansible all  -m shell -a "cat /etc/passwd | grep user1"
