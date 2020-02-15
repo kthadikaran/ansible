@@ -22,6 +22,15 @@ Stepping through a playbook may also be useful
 
 $ansible-playbook --step myplaybook.yml
 
+Basics of Playbook
+
+Hosts and Users
+
+---
+- hosts: all:Linuxservers           # List of one or more groups or host patterns, separated by colons, 
+  remote_user: ansible              # Remote user to complete the steps called tasks Remote users can also be defined per task.
+  
+  
 
 
  
