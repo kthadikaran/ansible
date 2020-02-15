@@ -10,17 +10,17 @@ A playbook is a set of instructions which is called as task or play that define 
 
 Ansible playbook for beginner
 
-*If you’re new to YAML, the syntax can be tricky at first, particularly with spacing (no tabs). Before running a playbook, you can check the syntax using:
+If you’re new to YAML, the syntax can be tricky at first, particularly with spacing (no tabs). Before running a playbook, you can check the syntax using:
 
-ansible-playbook --syntax-check myplaybook.yml
+$ansible-playbook --syntax-check myplaybook.yml
 
-*You can test a playbook without actually making any changes to the target hosts:
+You can test a playbook without actually making any changes to the target hosts:
 
-ansible-playbook --check myplaybook.yml
+$ansible-playbook --check myplaybook.yml
 
-* Stepping through a playbook may also be useful:
+Stepping through a playbook may also be useful
 
-ansible-playbook --step myplaybook.yml
+$ansible-playbook --step myplaybook.yml
 
 
 
