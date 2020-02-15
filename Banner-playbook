@@ -28,32 +28,19 @@ playbook: bannerfile.yml
           name: sshd
           state: restarted
 [ansible@ansible_master playbooks]$ ansible-playbook bannerfile.yml
- [WARNING]: While constructing a mapping from /home/ansible/ansible-infra/playbooks/bannerfile.yml, line 15, column 11, found a duplicate dict
-key (name). Using last defined value only.
 
- [WARNING]: Ignoring invalid attribute: state
+*If you’re new to YAML, the syntax can be tricky at first, particularly with spacing (no tabs). Before running a playbook, you can check the syntax using:
+
+ansible-playbook --syntax-check myplaybook.yml
+
+*You can test a playbook without actually making any changes to the target hosts:
+
+ansible-playbook --check myplaybook.yml
+
+* Stepping through a playbook may also be useful:
+
+ansible-playbook --step myplaybook.yml
 
 
-PLAY [Update banner to all the servers] ********************************************************************************************************
 
-TASK [Gathering Facts] *************************************************************************************************************************
-ok: [192.168.43.18]
-ok: [192.168.43.182]
-
-TASK [Copy the banner files to remote systems] *************************************************************************************************
-changed: [192.168.43.182]
-changed: [192.168.43.18]
-
-TASK [replace banner line at sshd config] ******************************************************************************************************
-changed: [192.168.43.182]
-changed: [192.168.43.18]
-
-TASK [sshd] ************************************************************************************************************************************
-ok: [192.168.43.182]
-ok: [192.168.43.18]
-
-PLAY RECAP *************************************************************************************************************************************
-192.168.43.18              : ok=4    changed=2    unreachable=0    failed=0
-192.168.43.182             : ok=4    changed=2    unreachable=0    failed=0
-
-[ansible@ansible_master playbooks]$
+ 
