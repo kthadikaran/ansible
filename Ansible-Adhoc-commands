@@ -30,3 +30,7 @@ ansible Linuxservers -m fetch -a "src=/tmp/ansibletest.txt dest=/home/ansible"
 User Module
 ansible all -m user -a "name=user1 password=user1" --become
 ansible all  -m shell -a "cat /etc/passwd | grep user1"
+
+File Module
+ansible all -m file -a "dest=/home/ansible/ansiblefilemodule.txt state=touch mode=600 owner=ansible group=ansible" 
+ansible all -m shell -a "ls -lrt"
