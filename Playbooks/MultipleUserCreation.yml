@@ -6,10 +6,16 @@
   - name: Add multiple users on ubuntu
     user:
       name: "{{ item }}"
+      password: "$6$Tpq8mn2VjXAtP$8os2M0I38mGLrt/Nrxm04duo//WkwW8LFXg8Ljo9A.4W18CAFguyvPa3CS2OJ8NRqwx0Ey.IHrH0ZLFk0z9Lb1" #Mentioning plain password in ansible not best practice. Instead you need to generate encrypted password then mention it
+you can use mkpasswd --method=sha-512 for this password generation.
       groups: "sudo"
+      shell: "/bin/bash"
       state: present
+#      state: absent 
+#      remove: yes
+#      force: yes
+
     with_items:
       - karan
       - Jessica
       - Langton
-
