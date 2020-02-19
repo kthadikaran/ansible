@@ -1,0 +1,16 @@
+---
+- name: copy repo files to remote systems
+  hosts: webservers
+  user: ansible
+  become: true
+  tasks:
+       - name: copy the repo files to remote systems
+         copy: src=/etc/yum.repos.d/ansible.repo dest=/etc/yum.repos.d/ansible.repo
+       - name: install Apache web server
+         action: yum name=httpd state=installed
+       - name: copy html file
+         copy: src=/home/ansible/ansible-infra/index/html dest=/var/www/html/index.html
+       - name: start apache
+         service:
+         name: httpd
+         state: restarted
