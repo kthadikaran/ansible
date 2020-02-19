@@ -1,0 +1,31 @@
+---
+- hosts: ubuntulinux
+  remote_user: ansible
+  become: yes
+
+  tasks:
+  - name: Check all the instances are online.
+    ping:
+
+  - name: Install apache2 packages
+    apt:
+      name: apache2
+      update_cache: yes
+      force_apt_get: yes
+      state: latest
+
+  - name: Start apache2 service
+    service:
+      name: apache2
+      state: started
+      enabled: yes
+    
+    notify: 
+      - Restart apache2 service
+
+  handlers:
+  - name: Restart apache2 service
+    service:
+      name: apache2
+      state: restarted
+

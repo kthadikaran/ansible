@@ -1,0 +1,19 @@
+---
+- hosts: linuxservers
+  remote_user: ansible
+  become: yes
+
+  tasks:
+  - name: Check all the instances are online.
+    ping:
+
+  - name: Install httpd packages
+    yum:
+      name: httpd
+      state: latest
+
+  - name: Start apache webserver services.
+    service:
+      name: httpd
+      state: started
+      enabled: yes   
