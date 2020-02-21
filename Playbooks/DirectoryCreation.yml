@@ -1,0 +1,12 @@
+---
+- hosts: all
+  remote_user: ansible
+  become: yes
+  tasks:
+  - name: Direcctory creation
+    file:
+      path: /opt/web
+      state: directory
+      owner: ansible
+      group: ansible
+      mode: 0777
