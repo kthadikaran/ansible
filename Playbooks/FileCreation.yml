@@ -1,0 +1,13 @@
+---
+- hosts: all
+  remote_user: ansible
+  become: yes
+
+  tasks:
+  - name: File creation
+    file:
+      path: /opt/web/index.html
+      state: touch
+      owner: apache
+      group: apache
+      mode: 0777
