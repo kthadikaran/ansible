@@ -1,7 +1,6 @@
 ---
 - hosts: all
   remote_user: ansible
-  become: yes
   tasks:
   - name: Direcctory creation
     file:
@@ -10,3 +9,6 @@
       owner: ansible
       group: ansible
       mode: 0777
+    become: yes
+    become_method: sudo
+
