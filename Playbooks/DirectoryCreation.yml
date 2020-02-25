@@ -1,6 +1,8 @@
 ---
 - hosts: all
   remote_user: ansible
+  become: yes
+  become_method: su  #You can also use other privilege escalation methods, like su:
   tasks:
   - name: Direcctory creation
     file:
@@ -9,6 +11,18 @@
       owner: ansible
       group: ansible
       mode: 0777
-    become: yes
+  
+---
+- hosts: all
+  remote_user: ansible
+  tasks:
+  - name: Direcctory creation
+    file:
+      path: /opt/web
+      state: directory
+      owner: ansible
+      group: ansible
+      mode: 0777
+    become: yes #You can also use keyword become on a particular task instead of the whole play:
     become_method: sudo
 
