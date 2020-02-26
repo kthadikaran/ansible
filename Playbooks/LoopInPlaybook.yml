@@ -1,0 +1,25 @@
+---
+- hosts: ubuntulinux
+  remote_user: ansible
+  tasks:
+  - name: Install nginx, php5 and mariadb packages.
+    apt:
+      name: "{{ item }}"
+      update_cache: yes
+      force_apt_get: yes
+      state: latest
+    notify:
+      - Start Nginx
+    loop:
+      - nginx
+      - php-cli
+      - mariadb-server
+    become: true
+    become_method: sudo
+
+  handlers:
+    - name: Start Nginx
+      service:
+        name: nginx
+        state: started
+        enabled: yes
