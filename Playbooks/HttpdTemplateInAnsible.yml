@@ -1,0 +1,26 @@
+---
+- hosts: amazonlinux
+  remote_user: ansible
+  tasks:
+    - name: Install ApacheWebserver
+      yum:
+        name: httpd
+        state: present
+      become: true
+      become_method: sudo
+
+    - name: Setup IndexFile
+      template:
+        src: index.html.j2
+        dest: /var/www/html/index.html
+      become: true
+      become_method: sudo
+
+      notify:
+        - Start Webserver
+  handlers:
+    - name: Start Webserver
+      service:
+        name: httpd
+        state: started
+        enabled: yes
