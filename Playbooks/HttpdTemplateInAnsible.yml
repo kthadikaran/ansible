@@ -1,26 +1,50 @@
 ---
-- hosts: amazonlinux
+- hosts: all
   remote_user: ansible
+  become: yes
+
   tasks:
-    - name: Install ApacheWebserver
+    - name: Install ApacheWebserverOnAmazon
       yum:
         name: httpd
-        state: present
-      become: true
-      become_method: sudo
+        state: latest
+      when: ansible_distribution == "Amazon"
+
+    - name: Install ApacheWebserverOnAmazon
+      apt:
+        name: apache2
+        state: latest
+        update_cache: yes
+        force_apt_get: yes
+      when: ansible_facts["os_family"] == "Debian"
 
     - name: Setup IndexFile
       template:
         src: index.html.j2
         dest: /var/www/html/index.html
-      become: true
-      become_method: sudo
 
       notify:
-        - Start Webserver
+        - start amazonwebserv
+        - start ubuntuwebserv
+
   handlers:
-    - name: Start Webserver
-      service:
-        name: httpd
-        state: started
-        enabled: yes
+  - name: start amazonwebserv
+    service:
+      name: httpd
+      state: started
+      enabled: yes
+
+  - name: start ubuntuwebserv
+    service:
+      name: apache2
+      state: started
+      enabled: yes
+Jinja2 Template
+
+cat index.html.j2
+<html>
+<center>
+   <h1> The hostname of this webserver is {{ ansible_hostname }}</h1>
+   <h3> It is running on {{ ansible_os_family}}system </h3>
+</center>
+</html>
