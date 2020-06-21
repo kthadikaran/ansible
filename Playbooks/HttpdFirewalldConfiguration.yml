@@ -1,0 +1,46 @@
+---
+- name: Install Apache web package and start servie
+  hosts: webservers
+  user: nwayansible
+  become: yes
+  become_method: sudo
+  vars:
+    web_pkg: httpd
+    web_service: httpd
+    fw_service: firewalld
+    rule: http
+  tasks:
+  - name: install httpd package using yum module
+    yum:
+        name:
+          - "{{ web_pkg }}"
+        state: latest
+  - name: start and enable the {{ fw_service }} service
+    service:
+       name: "{{ fw_service }}"
+       enabled: yes
+       state: started
+  - name: start and enable the {{ web_service }} service
+    service:
+       name: "{{ web_service }}"
+       enabled: yes
+       state: started
+  - name: create web content to be served
+    copy:
+       content: "This content created by ansible playbook."
+       dest: /var/www/html/index.html
+  - name: OPen the port {{ rule }}
+    firewalld:
+       service: "{{ rule }}"
+       permanent: yes
+       immediate: yes
+       state: enabled
+
+- name: verify the apache service
+  hosts: localhost
+  tasks:
+  - name: ensure webserver is reachable
+    uri:
+      url: http://192.168.25.131
+      status_code: 200
+...   
