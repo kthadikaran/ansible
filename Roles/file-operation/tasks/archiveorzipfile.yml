@@ -1,0 +1,5 @@
+---
+- name: Archive the files and
+  archive:
+    path: /home/nwayansible/Preamble.txt
+    format: zip

@@ -1,0 +1,12 @@
+---
+- name: Multiple  Directory Creation task
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: nwayansible
+    group: nwayansible
+    mode:  0775
+  with_items:
+    - '/home/nwayansible/dir1'
+    - '/home/nwayansible/dir2'
+    - '/home/nwayansible/dir3'

@@ -1,0 +1,6 @@
+---
+- name: Convert upper case into lower case.
+  replace:
+    path: /home/nwayansible/Preamble.txt
+    regexp: 'PEOPLE'
+    replace: "people"

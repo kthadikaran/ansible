@@ -1,0 +1,7 @@
+---
+  vars:
+    mailid: thadikaran.kesavan@infosys.com
+  tasks:
+  - name: Variable value display task
+    debug:
+      msg: "{{ mailid }}"

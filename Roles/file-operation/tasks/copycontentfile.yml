@@ -1,0 +1,5 @@
+---
+- name: Copy the file to remote host
+  copy:
+    src: "/home/nwayansible/Preamble.txt"
+    dest: "/home/nwayansible/"

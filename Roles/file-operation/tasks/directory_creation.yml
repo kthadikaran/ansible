@@ -1,0 +1,8 @@
+---
+- name: Directory Creation task
+  file:
+    path: /home/nwayansible/dir_first
+    state: directory
+    owner: nwayansible
+    group: nwayansible
+    mode:  0775

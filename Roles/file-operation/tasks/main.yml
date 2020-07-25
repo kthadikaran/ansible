@@ -1,0 +1,6 @@
+---
+# tasks file for file-operation
+- import_tasks: directory_creation.yml
+- import_tasks: multipledirectory_creation.yml
+- import_tasks: copycontentfile.yml
+- import_tasks: stringreplace.yml
