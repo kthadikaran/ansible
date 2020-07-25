@@ -1,0 +1,12 @@
+---
+- name: Download files from url
+  hosts: webservers
+  var_files: 
+    - /home/nwayansible/var_url.yml
+  tasks:
+  - name: Using variable from external file downloading file
+    win_get_url:
+	  url:{{"path"}}
+	  dest: .\Downloads
+	  
+	    

@@ -1,0 +1,10 @@
+---
+- name: Download files from url
+  hosts: webservers
+  tasks:
+  - name: Using variable from external file downloading file
+    get_url:
+	  url: "{{ path }}"
+	  dest: ./
+	  
+	    

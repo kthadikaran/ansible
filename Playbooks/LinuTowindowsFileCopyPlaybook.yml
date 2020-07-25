@@ -1,0 +1,11 @@
+---
+- name: Download files from url
+  hosts: webservers
+  tasks:
+  - name: Using win_copy from linux to windows
+    win_copy:
+	  Src: /hoome/nwayansible
+	  dest: D:\Software\
+
+	  
+	    
