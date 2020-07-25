@@ -1,0 +1,3 @@
+---
+# tasks file for common
+- selinux: policy=targeted state=permissive
