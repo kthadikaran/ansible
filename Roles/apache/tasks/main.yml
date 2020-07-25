@@ -1,0 +1,19 @@
+---
+# tasks file for apache
+- name: Install httd packages on all server in web group
+  yum:
+    name: httpd
+    state: latest
+
+- name: Start https webservices.
+  service:
+    name: httpd
+    state: started 
+    enabled: yes
+
+- name: Copy index.html file
+  template: 
+    src=index.html
+    dest=/var/www/html
+  notify: 
+    - restart apache
