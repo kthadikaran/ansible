@@ -21,6 +21,7 @@ sudo adduser ansible sudo
 Create SSH Key
 su ansible
 ssh-keygen
+ssh-copy-id  ansible@192.168.25.137
 
 #/etc/sudoers.d/
 #nano 90-cloud-init-users
