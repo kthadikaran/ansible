@@ -35,16 +35,14 @@ Galaxy can use git to add other role sources, such as GitHub. You can initialize
 
 Here are some helpful ansible-galaxy commands you might use from time to time:
     
--  ansible-galaxy install <name of role>.
-
--  ansible-galaxy list displays a list of installed roles, with version numbers.
-
--  ansible-galaxy remove <role> removes an installed role.
-
--  ansible-galaxy info provides a variety of information about Ansible Galaxy.
-
--  ansible-galaxy init can be used to create a role template suitable for submission to Ansible Galaxy.
-
+-  ansible-galaxy install <name of role>. #It installs one or more connections.
+-  ansible-galaxy list  #displays a list of installed roles, with version numbers.
+-  ansible-galaxy remove <role> # Removes an installed role.
+-  ansible-galaxy info  #Provides a variety of information about Ansible Galaxy.
+-  ansible-galaxy init #It creates a basic collection Skeleton based on the default template included with Ansible or your own template.
+-  ansible-galexy build #It creates a collection artifact that can be uploaded to the galaxy or your own repository.
+-  ansible-galexy publish #It publishes a built connection artifact to the galaxy.
+  
 The Keys Features of Ansible
 - Agentless
 - Idempotent
