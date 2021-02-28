@@ -8,7 +8,7 @@ It is considered to be a configuration management, orchestration, and deployment
 Ansible automates using the SSH protocol. The control machine uses an SSH connection to communicate with its target hosts, which are typically Linux hosts. 
 If you’re a Windows sysadmin, you can still use Ansible to automate your Windows environments using WinRM as opposed to SSH. 
 
-What Ansible does
+What Ansible does?
 
 Common sysadmin tasks that can be performed with Ansible include patching, updating systems, user and group management, and provisioning.
 Ansible presently has a huge footprint in IT Automation—if not the largest presently—and is considered to be the most popular and widely used configuration management, orchestration, and deployment tool available today.
@@ -22,7 +22,8 @@ A playbook is a set of instructions which is called as task or play that define 
 - Task: Invoking the ansible module.
 
 Ansible Roles:
- Roles let you automatically load related vars_files, tasks, handlers, and other Ansible artifacts based on a known file structure. Once you group your content in roles, you can easily reuse them and share them with other users.
+
+Roles let you automatically load related vars_files, tasks, handlers, and other Ansible artifacts based on a known file structure. Once you group your content in roles, you can easily reuse them and share them with other users.
 Structure of Roles:
 
 ![image](https://user-images.githubusercontent.com/41946619/109410404-77788180-79c0-11eb-9663-115d6a92c011.png)
