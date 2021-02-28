@@ -27,6 +27,24 @@ Structure of Roles:
 
 ![image](https://user-images.githubusercontent.com/41946619/109410404-77788180-79c0-11eb-9663-115d6a92c011.png)
 
+
+Here:
+- tasks/main.yml - the main list of tasks that the role executes.
+
+- handlers/main.yml - handlers, which may be used within or outside this role.
+
+- library/my_module.py - modules, which may be used within this role.
+
+- defaults/main.yml - default variables for the role. These variables have the lowest priority of any variables available, and can be easily overridden by any other variable, including inventory variables.
+
+- vars/main.yml - other variables for the role.
+
+- files/main.yml - files that the role deploys.
+
+- templates/main.yml - templates that the role deploys.
+
+- meta/main.yml - metadata for the role, including role dependencies.
+
 Ansible Galaxy:
 
 Ansible Galaxy is essentially a large public repository of Ansible roles. Galaxy contains a large number of roles that are constantly evolving and increasing.
