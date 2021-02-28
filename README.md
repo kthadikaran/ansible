@@ -23,8 +23,9 @@ A playbook is a set of instructions which is called as task or play that define 
 
 Ansible Roles:
 
-Roles let you automatically load related vars_files, tasks, handlers, and other Ansible artifacts based on a known file structure. Once you group your content in roles, you can easily reuse them and share them with other users.
-Structure of Roles:
+In Ansible, the role is the primary mechanism for breaking a playbook into multiple files. This simplifies writing complex playbooks, and it makes them easier to reuse. The breaking of playbook allows you to logically break the playbook into reusable components.
+
+Roles are not playbooks. Roles are small functionality which can be independently used but have to be used within playbooks. There is no way to directly execute a role. Roles have no explicit setting for which host the role will apply to.
 
 ![image](https://user-images.githubusercontent.com/41946619/109410404-77788180-79c0-11eb-9663-115d6a92c011.png)
 
@@ -58,7 +59,7 @@ Here are some helpful ansible-galaxy commands you might use from time to time:
 -  ansible-galaxy list  #displays a list of installed roles, with version numbers.
 -  ansible-galaxy remove <role> # Removes an installed role.
 -  ansible-galaxy info  #Provides a variety of information about Ansible Galaxy.
--  ansible-galaxy init #It creates a basic collection Skeleton based on the default template included with Ansible or your own template.
+-  ansible-galaxy init nginx_ansible #It creates a basic collection Skeleton based on the default template included with Ansible or your own template.
 -  ansible-galexy build #It creates a collection artifact that can be uploaded to the galaxy or your own repository.
 -  ansible-galexy publish #It publishes a built connection artifact to the galaxy.
   
