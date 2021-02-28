@@ -1,35 +1,76 @@
 # Ansible
-This repository will discuss about Ansible Ad-hoc commands and Ansible Playbooks
+This repository will discuss about Ansible, Ad-hoc commands, Playbooks, Roles and Anible galexy:
 
-Ansible is a free and opensource automation tool which is enables you to manage and control multiple servers from one central location.
+Ansible is a multiplier, a tool that automates and scales infrastructure of every size. 
+
+It is considered to be a configuration management, orchestration, and deployment tool.
+
+Ansible automates using the SSH protocol. The control machine uses an SSH connection to communicate with its target hosts, which are typically Linux hosts. 
+If you’re a Windows sysadmin, you can still use Ansible to automate your Windows environments using WinRM as opposed to SSH. 
+
+What Ansible does
+
+Common sysadmin tasks that can be performed with Ansible include patching, updating systems, user and group management, and provisioning.
+Ansible presently has a huge footprint in IT Automation—if not the largest presently—and is considered to be the most popular and widely used configuration management, orchestration, and deployment tool available today.
 
 Ansible uses YAML (Yet Another Markup Language) in its configuration and automation jobs which are human-readable and quite easy to follow. YAML uses SSH protocol to communicate with remote servers, unlike other automation platforms that require to you install an agent on remote nodes to communicate with them.
 
 A playbook is a set of instructions which is called as task or play that define how tasks are to be executed on remote hosts or a group of host machines. 
 
+Playbooks: A List of plays.
+Plays: Task
+Task: Calling the ansible module.
 
-Ansible playbook for beginner
+Ansible Roles:
+ Roles let you automatically load related vars_files, tasks, handlers, and other Ansible artifacts based on a known file structure. Once you group your content in roles, you can easily reuse them and share them with other users.
+Structure of Roles:
 
-If you’re new to YAML, the syntax can be tricky at first, particularly with spacing (no tabs). Before running a playbook, you can check the syntax using:
+[root@controlhost roles]# tree file-operation/
+		file-operation/
+		├── defaults
+		│   └── main.yml
+		├── files
+		├── handlers
+		│   └── main.yml
+		├── meta
+		│   └── main.yml
+		├── README.md
+		├── tasks
+		│   ├── archiveorzipfile.yml
+		│   ├── copycontentfile.yml
+		│   ├── directory_creation.yml
+		│   ├── main.yml
+		│   ├── multipledirectory_creation.yml
+		│   ├── stringreplace.yml
+		│   └── variabledisplay.yml
+		├── templates
+		├── tests
+		│   ├── inventory
+		│   └── test.yml
+		└── vars
+			└── main.yml
 
-$ansible-playbook --syntax-check myplaybook.yml
+		8 directories, 14 files
 
-You can test a playbook without actually making any changes to the target hosts:
+Ansible Galexy:
 
-$ansible-playbook --check myplaybook.yml
+Ansible Galaxy is essentially a large public repository of Ansible roles. Galaxy contains a large number of roles that are constantly evolving and increasing.
 
-Stepping through a playbook may also be useful
+Galaxy can use git to add other role sources, such as GitHub. You can initialize a new galaxy role using ansible-galaxy init, or you can install a role directly from the Ansible Galaxy role store by executing the command ansible-galaxy install <name of role>.
 
-$ansible-playbook --step myplaybook.yml
+Here are some helpful ansible-galaxy commands you might use from time to time:
+    
+-  ansible-galaxy install <name of role>.
 
-Basics of Playbook
+-  ansible-galaxy list displays a list of installed roles, with version numbers.
 
-Hosts and Users
+-  ansible-galaxy remove <role> removes an installed role.
 
-1. List of one or more groups or host patterns, separated by colons, 
-2. Remote user to complete the steps called tasks Remote users can also be defined per task.
-  
-  
+-  ansible-galaxy info provides a variety of information about Ansible Galaxy.
 
+-  ansible-galaxy init can be used to create a role template suitable for submission to Ansible Galaxy.
 
- 
+The Keys Features of Ansible
+- Agentless
+- Idempotent
+- Simple and extensible
