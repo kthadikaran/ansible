@@ -1,5 +1,5 @@
 # Ansible
-This repository will discuss about Ansible, Ad-hoc commands, Playbooks, Roles and Anible galexy:
+This repository will discuss about Ansible, Ad-hoc commands, Playbooks, Roles and Anible galaxy:
 
 Ansible is a multiplier, a tool that automates and scales infrastructure of every size. 
 
@@ -27,7 +27,7 @@ Structure of Roles:
 
 ![image](https://user-images.githubusercontent.com/41946619/109410404-77788180-79c0-11eb-9663-115d6a92c011.png)
 
-Ansible Galexy:
+Ansible Galaxy:
 
 Ansible Galaxy is essentially a large public repository of Ansible roles. Galaxy contains a large number of roles that are constantly evolving and increasing.
 
