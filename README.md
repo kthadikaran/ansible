@@ -25,32 +25,7 @@ Ansible Roles:
  Roles let you automatically load related vars_files, tasks, handlers, and other Ansible artifacts based on a known file structure. Once you group your content in roles, you can easily reuse them and share them with other users.
 Structure of Roles:
 
-[root@controlhost roles]# tree file-operation/
-		file-operation/
-		├── defaults
-		│   └── main.yml
-		├── files
-		├── handlers
-		│   └── main.yml
-		├── meta
-		│   └── main.yml
-		├── README.md
-		├── tasks
-		│   ├── archiveorzipfile.yml
-		│   ├── copycontentfile.yml
-		│   ├── directory_creation.yml
-		│   ├── main.yml
-		│   ├── multipledirectory_creation.yml
-		│   ├── stringreplace.yml
-		│   └── variabledisplay.yml
-		├── templates
-		├── tests
-		│   ├── inventory
-		│   └── test.yml
-		└── vars
-			└── main.yml
-
-		8 directories, 14 files
+![image](https://user-images.githubusercontent.com/41946619/109410404-77788180-79c0-11eb-9663-115d6a92c011.png)
 
 Ansible Galexy:
 
