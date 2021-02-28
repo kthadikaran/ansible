@@ -18,8 +18,8 @@ Ansible uses YAML (Yet Another Markup Language) in its configuration and automat
 A playbook is a set of instructions which is called as task or play that define how tasks are to be executed on remote hosts or a group of host machines. 
 
 - Playbooks: A List of plays.
-- Plays: Task
-- Task: Calling the ansible module.
+- Plays: Task.
+- Task: Invoking the ansible module.
 
 Ansible Roles:
  Roles let you automatically load related vars_files, tasks, handlers, and other Ansible artifacts based on a known file structure. Once you group your content in roles, you can easily reuse them and share them with other users.
