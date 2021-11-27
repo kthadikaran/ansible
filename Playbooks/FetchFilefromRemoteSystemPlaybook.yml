@@ -4,8 +4,7 @@
   tasks:
   - name: Using variable from external file downloading file
     fetch:
-	  Src: .\Downloads
-	  dest: ./
-	  flat: true
-	  
+     Src: .\Downloads
+     dest: ./
+     flat: true
 	    
