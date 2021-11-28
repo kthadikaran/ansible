@@ -1,35 +1,39 @@
+
 ---
-- name: "Apache Webserver installation on CentOS"
-  become: true
-  hosts: linuxinstances
+- hosts: webservers
+  remote_user: ansible-user
+  become: yes
   vars:
     web_root_dir: /var/www/html
     webserver: httpd
 
   tasks:
-  - name: "Apache Server installation on linuxinstances"
-    yum:
-      name: "{{ webserver }}"
-      state: latest
-  - name: "Apache Webserver Service Up"
-    service:
-      enabled: true
-      name: "{{ webserver }}"
-      state: started
-  - name: "Add ports to firewalld"
-    ansible.posix.firewalld:
-      zone: public
-      port: "{{ item }}"
-      permanent: yes
-      state: enabled
-    when: "ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'"
-    loop:
-      - 80/tcp
-      - 443/tcp
-  - name: Webserver Directory
-    file:
-      path: "{{ web_root_dir }}"
-  - name: Static website deployment
-    uri:
-      url: https://raw.githubusercontent.com/kthadikaran/Ansible/master/static-website/index.html
-      dest: "{{ web_root_dir }}"
+   - name: httpd package installation on webservers
+     yum:
+       name: "{{ webserver }}"
+       state: latest
+
+   - name: "httpd Service Up"
+     service:
+       enabled: true
+       name: "{{ webserver }}"
+       state: started
+
+   - name: Add ports to firewalld
+     firewalld:
+       zone: public
+       port: "{{ item }}"
+       permanent: yes
+       state: enabled
+     when: "ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'"
+     with_items:
+       - 80/tcp
+       - 443/tcp
+
+   - name: Webserver Directory
+     file:
+       path: "{{ web_root_dir }}"
+
+   - name: Static website deployment
+     uri:
+       url: https://raw.githubusercontent.com/kthadikaran/Ansible/master/static-website/index.html
