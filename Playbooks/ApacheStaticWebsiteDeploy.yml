@@ -1,3 +1,36 @@
+---
+- hosts: webservers
+  remote_user: ansible-user
+  become: yes
+  vars:
+    web_root_dir: /var/www/html
+    webserver: httpd
+
+  tasks:
+   - name: "httpd package installation on webservers"
+     yum:
+       name: "{{ webserver }}"
+       state: latest
+
+   - name: "Start httpd service"
+     service:
+       enabled: true
+       name: "{{ webserver }}"
+       state: started
+
+   - name: "Copying index file to webservers"
+     copy:
+       src: /home/ansible-user/ansible-lab/webfiles/index.html
+       dest: /var/www/html
+     notify:
+      - restart httpd
+
+  handlers:
+   - name: restart httpd
+     ansible.builtin.service:
+       name: httpd
+       state: restarted
+
 
 ---
 - hosts: webservers
@@ -8,32 +41,26 @@
     webserver: httpd
 
   tasks:
-   - name: httpd package installation on webservers
+   - name: "httpd package installation on webservers"
      yum:
        name: "{{ webserver }}"
        state: latest
 
-   - name: "httpd Service Up"
+   - name: "Start httpd service"
      service:
        enabled: true
        name: "{{ webserver }}"
        state: started
 
-   - name: Add ports to firewalld
-     firewalld:
-       zone: public
-       port: "{{ item }}"
-       permanent: yes
-       state: enabled
-     when: "ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'"
-     with_items:
-       - 80/tcp
-       - 443/tcp
+   - name: "Downlaoding Index file from GitHub"
+     get_url:
+       url: https://raw.githubusercontent.com/kthadikaran/ansible/master/static-website/index.html
+       dest: "{{ web_root_dir }}"
+     notify:
+      - restart httpd
 
-   - name: Webserver Directory
-     file:
-       path: "{{ web_root_dir }}"
-
-   - name: Static website deployment
-     uri:
-       url: https://raw.githubusercontent.com/kthadikaran/Ansible/master/static-website/index.html
+  handlers:
+   - name: restart httpd
+     ansible.builtin.service:
+       name: httpd
+       state: restarted
